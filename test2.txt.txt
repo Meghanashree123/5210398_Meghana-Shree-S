@@ -1,0 +1,4 @@
+some text file 
+
+this is from main
+from
