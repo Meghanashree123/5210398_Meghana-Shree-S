@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <limits.h>
+
+void MiniMaxSum(int* arr, int size) {
+    long total=0;
+    long minimum=LONG_MAX;
+    long maximum=LONG_MIN;
+    for(int i=0;i<size;i++){
+        long value=arr[i];
+        total+=value;
+        if(value<minimum){
+            minimum=value;
+        }
+        
+        if(value>maximum){
+            maximum=value;
+        }
+    }
+    long min_sum=total-maximum;
+    long max_sum=total-minimum;
+    printf("%ld %ld\n",min_sum,max_sum);
+}
+
+int main() {
+    int arr[5];
+
+    // Read 5 integers from input
+    for(int i=0;i<5;i++){
+        scanf("%d",&arr[i]);
+    }
+    MiniMaxSum(arr,5);
+    return 0;
+}

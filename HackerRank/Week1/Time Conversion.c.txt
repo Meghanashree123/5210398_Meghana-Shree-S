@@ -1,0 +1,25 @@
+#include<stdio.h>
+
+char* Time_Conversion(char* time) {
+    static char converted[9];
+    int hour;
+    hour=(time[0]-'0')*10+(time[1]-'0');
+    //handle AM/PM
+    if(time[8]=='A'){
+        if(hour==12)
+           hour=0;
+           
+    }else{//PM
+        if(hour!=12)
+           hour+=12;
+    }
+    sprintf(converted,"%02d:%c%c:%c%c",hour,time[3],time[4],time[6],time[7]);
+    return converted;
+}
+
+int main() {
+    char input[11];
+    scanf("%s",input);
+    printf("%s\n",Time_Conversion(input));
+    return 0;
+}
