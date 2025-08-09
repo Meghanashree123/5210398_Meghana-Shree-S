@@ -38,19 +38,19 @@ char* readline();
  *
  */
 char* pangrams(char* s) {
-    bool seen[26]={false};
-    int count=0;
+    bool Seen[26]={false};
+    int Count=0;
     for(int i=0;s[i] !='\0';i++){
         char ch =tolower(s[i]);
         if(ch>='a' && ch<='z'){
             int index=ch-'a';
-            if(!seen[index]){
-                seen[index]=true;
-                count++;
+            if(!Seen[index]){
+                Seen[index]=true;
+                Count++;
             }
         }
     }
-    if(count==26){
+    if(Count==26){
         return "pangram";
         }else{
             return "not pangram";

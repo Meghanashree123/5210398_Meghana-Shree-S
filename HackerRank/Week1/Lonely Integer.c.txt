@@ -18,12 +18,12 @@ int parse_int(char*);
 
 
 int lonelyinteger(int a_count, int* a) {
-    int result=0;
+    int Result=0;
     int i;
     for(i=0;i<a_count;i++){
-        result^=a[i];
+        Result^=a[i];
     }
-    return result;
+    return Result;
 
 }
 
