@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 100000   
+// stack structure
+typedef struct {
+    int data[MAX];
+    int top;
+} Stack;
+
+
+void initStack(Stack *s) {
+    s->top = -1;
+}
+
+
+int isEmpty(Stack *s) {
+    return s->top == -1;
+}
+
+
+void push(Stack *s, int value) {
+    if (s->top < MAX - 1) {
+        s->data[++s->top] = value;
+    }
+}
+
+int pop(Stack *s) {
+    if (!isEmpty(s)) {
+        return s->data[s->top--];
+    }
+    return -1;  
+}
+
+int peek(Stack *s) {
+    if (!isEmpty(s)) {
+        return s->data[s->top];
+    }
+    return -1;
+}
+
+int main() {
+    int q;
+    scanf("%d", &q);
+
+    Stack s1, s2;  
+    initStack(&s1);
+    initStack(&s2);
+
+    while (q--) {
+        int type, x;
+        scanf("%d", &type);
+
+        if (type == 1) {
+         scanf("%d", &x);
+            push(&s1, x);
+        } else if (type == 2) {
+            
+            if (isEmpty(&s2)) {
+                while (!isEmpty(&s1)) {
+                    push(&s2, pop(&s1));
+                }
+            }
+            pop(&s2);  
+        } else if (type == 3) {
+            
+            if (isEmpty(&s2)) {
+                while (!isEmpty(&s1)) {
+                    push(&s2, pop(&s1));
+                }
+            }
+            printf("%d\n", peek(&s2));
+        }
+    }
+
+    return 0;
+}
